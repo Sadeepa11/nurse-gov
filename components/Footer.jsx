@@ -217,8 +217,8 @@ export default function Footer() {
               <div className="col-12">
                 <div className="text-center">
                   <p>
-                    © 2023 All Rights Reserved. Powered by Phoenix Business
-                    Solutions
+                    © {new Date().getFullYear()} All Rights Reserved. Powered by Modulavers Systems
+              
                   </p>
                 </div>
               </div>
