@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -32,8 +31,8 @@ export default function Header() {
               <div className="col-lg-6 d-xl-block d-none">
                 <div className="left">
                   <div className="mail">
-                    <a href="mailto:info@finbiz.com">
-                      <i className="fal fa-envelope"></i> info@finbiz.com
+                    <a href="mailto:info@acnu.lk ">
+                      <i className="fal fa-envelope"></i> info@acnu.lk
                     </a>
                   </div>
                   <div className="working-time">
@@ -48,6 +47,15 @@ export default function Header() {
               <div className="col-lg-6 d-xl-block d-none">
                 <div className="right">
                   <ul className="top-nav">
+
+                      <li>
+                      <Link
+                        href="/applications"
+                      
+                      >
+                       Applications
+                      </Link>
+                    </li>
                     <li>
                       <a
                         href="https://application.slnif.com/nurses/acnu/register"
@@ -63,7 +71,7 @@ export default function Header() {
                   </ul>
                   <ul className="social-wrapper-one">
                     <li>
-                      <a href="#"><i className="fab fa-facebook-f"></i></a>
+                      <a href="https://web.facebook.com/profile.php?id=100069812386000"><i className="fab fa-facebook-f"></i></a>
                     </li>
                     <li>
                       <a href="#"><i className="fab fa-twitter"></i></a>
@@ -110,6 +118,9 @@ export default function Header() {
                       <li><Link className="nav-link" href="/gallery">GALLERY</Link></li>
                       <li><Link className="nav-link" href="/team">MEMBERS</Link></li>
                       <li><Link className="nav-item" href="/contactus">CONTACT US</Link></li>
+                      <li><Link className="nav-item" href="/news">NEWS AND EVENTS</Link></li>
+                      {/* <li><Link className="nav-item" href="/applications">APPLICATIONS</Link></li> */}
+                      
                     </ul>
                   </nav>
 
@@ -213,7 +224,7 @@ export default function Header() {
                 </div>
                 <div className="single">
                   <i className="fas fa-envelope"></i>
-                  <a href="#">hedhakama@gmail.com</a>
+                  <a href="#">info@acnu.lk</a>
                 </div>
                 <div className="single">
                   <i className="fas fa-globe"></i>
@@ -221,11 +232,14 @@ export default function Header() {
                 </div>
                 <div className="single">
                   <i className="fas fa-map-marker-alt"></i>
-                  <a href="#">949/4, Maradana Rd, Colombo 08</a>
+                  <a href="#">All Ceylon Nurses Union
+                    Service Station,
+                    949/4, Maradana Rd,
+                    Colombo 08</a>
                 </div>
               </div>
               <div className="social-wrapper-two menu">
-                <a href="#"><i className="fab fa-facebook-f"></i></a>
+                <a href="https://web.facebook.com/profile.php?id=100069812386000"><i className="fab fa-facebook-f"></i></a>
                 <a href="#"><i className="fab fa-twitter"></i></a>
                 <a href="#"><i className="fab fa-instagram"></i></a>
                 <a href="#"><i className="fab fa-whatsapp"></i></a>
@@ -242,10 +256,12 @@ export default function Header() {
                 <li><Link className="nav-link" href="/gallery">GALLERY</Link></li>
                 <li><Link className="nav-link" href="/team">MEMBERS</Link></li>
                 <li><Link className="nav-item" href="/contactus">CONTACT US</Link></li>
+                  <li><Link className="nav-item" href="/news">NEWS AND EVENTS</Link></li>
+                   <li><Link className="nav-item" href="/applications">APPLICATIONS</Link></li>
               </ul>
             </nav>
             <div className="social-wrapper-two menu mobile-menu">
-              <a href="#"><i className="fab fa-facebook-f"></i></a>
+              <a href="https://web.facebook.com/profile.php?id=100069812386000"><i className="fab fa-facebook-f"></i></a>
               <a href="#"><i className="fab fa-twitter"></i></a>
               <a href="#"><i className="fab fa-instagram"></i></a>
               <a href="#"><i className="fab fa-whatsapp"></i></a>

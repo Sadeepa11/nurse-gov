@@ -118,13 +118,13 @@ export default function Footer() {
               <div className="opening-time-inner">
                 <div className="info">
                   <span>Call Us 24/7 :- </span>
-                  <br />
-                  <a href="tel:+25621452156">(+256) 2145.2156</a>
+               
+                  <a href="tel:+25621452156">011-307 7222</a>
                 </div>
                 <div className="single">
                   <div className="info">
                     <span>Work with us:- </span>
-                    <a href="mailto:info@finbiz.com">info@finbiz.com</a>
+                    <a href="mailto:info@acnu.lk ">info@acnu.lk</a>
                   </div>
                 </div>
                 <div className="single">
@@ -132,9 +132,13 @@ export default function Footer() {
                     <span>Our Location:- </span>
                     <br />
                     <a href="#">
-                      XYZ Hilton Street, 125
-                      <br />
-                      Town United State
+                      All Ceylon Nurses Union Service Station,
+                          <br />
+                      949/4, Maradana Rd,
+                          <br />
+                      Colombo 08
+                   
+                      
                     </a>
                   </div>
                 </div>
@@ -217,8 +221,8 @@ export default function Footer() {
               <div className="col-12">
                 <div className="text-center">
                   <p>
-                    © {new Date().getFullYear()} All Rights Reserved. Powered by Modulavers Systems
-              
+                    © {new Date().getFullYear()} All Rights Reserved. Powered by Phoenix Business Soutions
+
                   </p>
                 </div>
               </div>

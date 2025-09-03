@@ -4,13 +4,16 @@ import Image from "next/image";
 import Link from "next/link";
 
 const teamMembers = [
-  { name: "S.Ravinda", role: "President" },
-  { name: "S.B Madhiwatha", role: "Secretary" },
-  { name: "Saman Vijethilaka", role: "Deputy Secretary" },
-  { name: "Amila Rathnayaka", role: "Corresponding Secretary" },
-  { name: "Prabath K Palipana", role: "Education Secretary" },
-  { name: "Suresh Dhawgala", role: "Treasurer" },
-  { name: "Sanjeewa Atabagaskada", role: "Editor" },
+  { name: "Ravindra Kahandawaarachchi", role: "President", image :  "/team/Ravindra.jpg" },
+  { name: "S.B.Madhiwatha", role: "Chief Secretary", image :  "/team/SBMadiwaththa.jpg" },
+  { name: "M.Vijekumar", role: "Deputy Secretary", image :  "/team/MVijayekumar.jpg" },
+  { name: "Name", role: "Organizitaion Secretary", image :  "/team/OrganizingSecretary.jpg" },
+  { name: "P.M.L.Weerasooriya", role: "Organizitaion Secretary", image :  "/team/PMLWeerasooriya.jpg" },
+  { name: "Prabath K Palipana", role: "Education Secretary", image :  "/team/PrabathPalipana.jpeg" },
+  { name: "Sanjeewa Munasinghe", role: "Media Secretary", image :  "/team/SanjeewaMunasinghe.jpg" },
+  { name: "Sanjeewa Atambagaskada", role: "Editor", image :  "/team/SanjeewaAtambagaskada.jpg" },
+  { name: "Neeta Pubudini.", role: "Treasurer", image :  "/team/NeetaPubudini.JPG" },
+  { name: "D.M.G.S.D Daulagala ", role: "Co-Treasurer", image :  "/team/Co-Treasurer.jpg" }
 ];
 
 export default function TeamPage() {
@@ -23,13 +26,11 @@ export default function TeamPage() {
             <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 breadcrumb-1">
               <h1 className="title">Team</h1>
             </div>
-             <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
               <div className="bread-tag">
                 <Link href="/">Home</Link>
                 <span> / </span>
-                <Link href="#" className="active">
-                  Team
-                </Link>
+                <Link href="#" className="active">Team</Link>
               </div>
             </div>
           </div>
@@ -48,17 +49,19 @@ export default function TeamPage() {
             </div>
           </div>
 
-          <div className="row g-5 mt--20 mt_md--30 mt_sm--0">
+          <div className="row g-5 mt--20 mt_md--30 mt_sm--0 team-grid">
             {teamMembers.map((member, idx) => (
               <div key={idx} className="col-lg-3 col-md-6 col-sm-12 col-12">
-                <div className="team-inner-two inner">
+                <div className="team-inner-two inner team-card">
                   <div className="thumbnail">
                     <a href="team-details.html">
                       <Image
-                        src="/assets/images/team/tm/team1.png"
-                        alt={member.name}
-                        width={300}
-                        height={300}
+                        src={member.image}
+                        alt={`${member.name} — ${member.role}`}
+                        fill
+                        sizes="(max-width: 576px) 100vw, (max-width: 992px) 50vw, 300px"
+                        style={{ objectFit: "cover", objectPosition: "center" }}
+                        priority={idx < 4}
                       />
                     </a>
                     <div className="social">
@@ -77,10 +80,9 @@ export default function TeamPage() {
               </div>
             ))}
           </div>
+
         </div>
       </div>
-
-      
     </>
   );
 }

@@ -10,10 +10,13 @@
     "format": "biome format --write"
   },
   "dependencies": {
+    "bootstrap": "^5.3.8",
+    "font-awesome": "^4.7.0",
     "framer-motion": "^12.23.12",
     "next": "^15.5.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-parallax-tilt": "^1.7.307",
     "swiper": "^11.2.10"
   },
   "devDependencies": {

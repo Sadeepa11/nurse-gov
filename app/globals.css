@@ -1,3 +1,30 @@
 /* app/globals.css */
 /* Keep this small. Your original theme CSS loads via <link> in layout.tsx */
 html, body { margin: 0; padding: 0; }
+
+
+/* Make all columns stretch so cards can be equal height */
+.team-grid > [class*="col-"] {
+  display: flex;
+}
+
+/* The card itself should fill the column height */
+.team-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Square image area; change to 4/5 or 3/4 if you prefer */
+.team-card .thumbnail {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1; /* consistent size */
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+/* Optional: keep content spaced nicely */
+.team-card .inner-content {
+  padding-top: 12px;
+}

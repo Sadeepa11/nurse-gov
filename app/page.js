@@ -1,22 +1,6 @@
 "use client";
 
-/**
- * ✅ WHAT THIS FILE DOES
- * - Recreates your HTML as a Next.js page
- * - Uses Swiper (React) for the hero + team carousels
- * - Uses Framer Motion for smooth reveal/fade/slide animations
- *
- * 📦 IMPORTANT IMPORTS (as you asked):
- * import { motion } from "framer-motion"
- * import { Swiper, SwiperSlide } from "swiper/react"
- * import { Pagination, Autoplay } from "swiper/modules"
- * import "swiper/css"
- * import "swiper/css/pagination"
- * import Link from "next/link"
- * import Image from "next/image"
- */
 
-import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -166,7 +150,7 @@ export default function HomePage() {
                     <div className="author-inner">
                       <a className="thumbnail" href="#">
                         <Image
-                          src="/assets/images/about/sm-01.png"
+                          src="/team/Ravindra.jpg"
                           width={72}
                           height={72}
                           alt="finbiz_founder"
@@ -252,12 +236,10 @@ export default function HomePage() {
                   <h3 className="title">
                     ALL CEYLON NURSES’ UNION
                     <br />
-                    Application for the Membership
+                   All Ceylon Nurses Union Represents Sri Lankan Nurses, Focusing on Their Rights, Welfare, Fair Wages, And Better Working Conditions.
                   </h3>
                 </div>
-                <Link className="rts-btn btn-primary-5" href="/contactus">
-                  Download
-                </Link>
+               
               </motion.div>
             </div>
           </div>
@@ -270,7 +252,7 @@ export default function HomePage() {
           <div className="row">
             <div className="col-12">
               <div className="title-area-style-six text-center">
-                <h2 className="title">Latest Blog Posts</h2>
+                <h2 className="title">Latest News and Events</h2>
               </div>
             </div>
           </div>
