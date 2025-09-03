@@ -1,0 +1,22 @@
+{
+  "name": "nursegov",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "biome check",
+    "format": "biome format --write"
+  },
+  "dependencies": {
+    "framer-motion": "^12.23.12",
+    "next": "^15.5.2",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "swiper": "^11.2.10"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.2.0"
+  }
+}

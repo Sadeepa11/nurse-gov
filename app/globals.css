@@ -1,0 +1,3 @@
+/* app/globals.css */
+/* Keep this small. Your original theme CSS loads via <link> in layout.tsx */
+html, body { margin: 0; padding: 0; }
