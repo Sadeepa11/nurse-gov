@@ -24,6 +24,7 @@ export default function RootLayout({
         <link rel="stylesheet" href="/assets/css/plugins/unicons.css" />
         <link rel="stylesheet" href="/assets/css/vendor/bootstrap.min.css" />
         <link rel="stylesheet" href="/assets/css/style.css" />
+        <title>ACNU | All Ceylon Nurses' Union</title>
       </head>
       <body>
 
