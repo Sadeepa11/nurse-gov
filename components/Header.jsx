@@ -100,8 +100,8 @@ export default function Header() {
                   <Link href="/">
                     <Image
                       src="/assets/images/logo/logo-1.png"
-                      width={160}
-                      height={60}
+                      width={200}
+                      height={90}
                       alt="ACNU logo"
                     />
                   </Link>
@@ -117,20 +117,20 @@ export default function Header() {
                       <li><Link className="nav-link" href="/about">ABOUT</Link></li>
                       <li><Link className="nav-link" href="/gallery">GALLERY</Link></li>
                       <li><Link className="nav-link" href="/team">MEMBERS</Link></li>
-                      <li><Link className="nav-item" href="/contactus">CONTACT US</Link></li>
-                      <li><Link className="nav-item" href="/news">NEWS AND EVENTS</Link></li>
+                      <li><Link className="nav-link" href="/contactus">CONTACT US</Link></li>
+                      <li><Link className="nav-link" href="/news">NEWS AND EVENTS</Link></li>
                       {/* <li><Link className="nav-item" href="/applications">APPLICATIONS</Link></li> */}
                       
                     </ul>
                   </nav>
 
                   <div className="button-area">
-                    <Link
+                    {/* <Link
                       href="/login"
                       className="rts-btn btn-primary ml--20 ml_sm--5 header-one-btn quote-btn"
                     >
                       MEMBER LOGIN
-                    </Link>
+                    </Link> */}
 
                     {/* Sidebar toggle */}
                     <button
@@ -178,7 +178,7 @@ export default function Header() {
           top: 0,
           right: 0,
           bottom: 0,
-          width: "350px",
+          width: "400px",
           maxWidth: "90vw",
           background: "#fff",
           zIndex: 1001,
@@ -201,8 +201,8 @@ export default function Header() {
             <Image
               className="logo"
               src="/assets/images/logo/logo-1.png"
-              width={150}
-              height={60}
+              width={200}
+              height={90}
               alt="finbiz_logo"
             />
           </Link>
@@ -242,7 +242,7 @@ export default function Header() {
                 <a href="https://web.facebook.com/profile.php?id=100069812386000"><i className="fab fa-facebook-f"></i></a>
                 <a href="#"><i className="fab fa-twitter"></i></a>
                 <a href="#"><i className="fab fa-instagram"></i></a>
-                <a href="#"><i className="fab fa-whatsapp"></i></a>
+                   <a href="https://wa.me/94710500058"><i className="fab fa-whatsapp"></i></a>
               </div>
             </div>
           </div>
@@ -255,16 +255,17 @@ export default function Header() {
                 <li><Link className="nav-link" href="/about">ABOUT</Link></li>
                 <li><Link className="nav-link" href="/gallery">GALLERY</Link></li>
                 <li><Link className="nav-link" href="/team">MEMBERS</Link></li>
-                <li><Link className="nav-item" href="/contactus">CONTACT US</Link></li>
-                  <li><Link className="nav-item" href="/news">NEWS AND EVENTS</Link></li>
-                   <li><Link className="nav-item" href="/applications">APPLICATIONS</Link></li>
+                <li><Link className="nav-link" href="/contactus">CONTACT US</Link></li>
+                <li><Link className="nav-link" href="/news">NEWS AND EVENTS</Link></li>
+                <li><Link className="nav-link" href="/applications">APPLICATIONS</Link></li>
               </ul>
             </nav>
             <div className="social-wrapper-two menu mobile-menu">
               <a href="https://web.facebook.com/profile.php?id=100069812386000"><i className="fab fa-facebook-f"></i></a>
               <a href="#"><i className="fab fa-twitter"></i></a>
               <a href="#"><i className="fab fa-instagram"></i></a>
-              <a href="#"><i className="fab fa-whatsapp"></i></a>
+            
+              <a href="https://wa.me/94710500058"><i className="fab fa-whatsapp"></i></a>
             </div>
             <a href="#" className="rts-btn btn-primary ml--20 ml_sm--5 header-one-btn quote-btnmenu">
               Get Quote

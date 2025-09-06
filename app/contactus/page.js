@@ -33,13 +33,13 @@ export default function TeamPage() {
               title: "Call Us 24/7",
               info: "011-3077222",
               link: "tel:+0113077222"
-            },{
+            }, {
               img: "/assets/images/contact/2.png",
               icon: "/assets/images/contact/shape/02.svg",
               title: "Make A Quote",
-              info: "hedhakama@gmail.com",
-              link: "mailto:hedhakama@gmail.com"
-            },{
+              info: "info@acnu.lk",
+              link: "mailto:info@acnu.lk"
+            }, {
               img: "/assets/images/contact/3.png",
               icon: "/assets/images/contact/shape/03.svg",
               title: "Service Station",
@@ -108,12 +108,59 @@ export default function TeamPage() {
                     method="post"
                   >
                     <div className="name-email">
-                      <input type="text" name="name" placeholder="Your Name" required />
-                      <input type="email" name="email" placeholder="Email Address" required />
+                      <input
+                        type="text"
+                        name="name"
+                        placeholder="Name"
+                        required
+                      />
+                      <input
+                        type="text"
+                        name="hospital"
+                        placeholder="Hospital"
+                        required
+                      />
                     </div>
-                    <input type="text" name="subject" placeholder="Your Subject" />
-                    <textarea placeholder="Type Your Message" name="message"></textarea>
-                    <button type="submit" className="rts-btn btn-primary">Send Message</button>
+
+                    <div className="name-email">
+                      <input
+                        type="text"
+                        name="id_number"
+                        placeholder="ID Number"
+                        required
+                      />
+                      <input
+                        type="tel"
+                        name="phone"
+                        placeholder="Phone Number"
+                        required
+                      />
+                    </div>
+
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Email Address"
+                      required
+                    />
+
+                    <input
+                      type="text"
+                      name="subject"
+                      placeholder="Your Subject"
+                    />
+
+                    <textarea
+                      placeholder="Type Your Message"
+                      name="message"
+                    ></textarea>
+
+                    <button
+                      type="submit"
+                      className="rts-btn btn-primary"
+                    >
+                      Send Message
+                    </button>
                   </form>
                 </div>
               </div>
@@ -121,6 +168,7 @@ export default function TeamPage() {
           </div>
         </div>
       </div>
+
     </div>
   );
 }

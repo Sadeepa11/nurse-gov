@@ -86,10 +86,10 @@ export default function HomePage() {
             {[
               { icon: "22.svg", title: "Union Start Date", val: "2007.01.23" },
               { icon: "23.svg", title: "Register Nurses", val: "10625" },
-              { icon: "24.svg", title: "Unregister Nurses", val: "28,125" },
-              { icon: "22.svg", title: "Government Nurses", val: "38750" },
+              // { icon: "24.svg", title: "Unregister Nurses", val: "28,125" },
+              { icon: "22.svg", title: "Government Nurses", val: "38750" }
             ].map((c, i) => (
-              <div className="col-xl-3 col-md-4" key={i}>
+              <div className="col-xl-4 col-md-5" key={i}>
                 <motion.div
                   className="rts-single-service-style-process text-center"
                   variants={fadeUp}
@@ -139,7 +139,7 @@ export default function HomePage() {
               >
                 <p className="disc">
                   Union recognized in the Sri Lankan trade union movement, which works to raise the
-                  professionalism of public sector nurses in the Sri Lankan nursing service, to
+                 professionalism of public sector nurses in the Sri Lankan nursing service, to
                   secure their rights, and to organize the entire nursing community by equipping
                   them with knowledge in order to build an optimal health service for the citizens.
                 </p>
@@ -177,7 +177,7 @@ export default function HomePage() {
                       <div className="call-details">
                         <span>Call us anytime</span>
                         <a href="tel:+94113077222">
-                          <h6 className="title">: 011-3077222</h6>
+                          <h6 className="title"> 011-3077222</h6>
                         </a>
                       </div>
                     </div>
@@ -235,9 +235,13 @@ export default function HomePage() {
                 <div className="title-area">
                   <h3 className="title">
                     ALL CEYLON NURSES’ UNION
+
+                    </h3>
                     <br />
+
+                    <span className="disc text-white font-weight-bold">
                    All Ceylon Nurses Union Represents Sri Lankan Nurses, Focusing on Their Rights, Welfare, Fair Wages, And Better Working Conditions.
-                  </h3>
+                  </span>
                 </div>
                
               </motion.div>

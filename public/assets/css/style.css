@@ -16635,10 +16635,10 @@ body.home-eleven #menu-btn:hover {
 .nav-main ul li:hover a.nav-link {
   color: var(--color-primary);
 }
-.nav-main ul li:hover a.nav-link::before {
+/* .nav-main ul li:hover a.nav-link::before {
   color: var(--color-primary);
   content: "\f077" !important;
-}
+} */
 .nav-main ul li:hover a.nav-link::after {
   width: 100%;
 }

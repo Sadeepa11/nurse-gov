@@ -23,7 +23,7 @@
    [class^="uil-"]:before, [class*=" uil-"]:before {
     font-family: "unicons";
     font-style: normal;
-    font-weight: normal;
+    font-weight: bolder;
     speak: none;
    
     display: inline-block;
