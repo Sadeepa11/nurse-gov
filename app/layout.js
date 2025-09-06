@@ -4,6 +4,7 @@
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ScrollProgress from "@/components/ScrollProgress";
 
 export const Metadata = {
   title: "ALL CEYLON NURSES’ UNION | SRI LANKA",
@@ -31,6 +32,7 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+ <ScrollProgress />
 
 
         {/*  scripts start form hear */}
