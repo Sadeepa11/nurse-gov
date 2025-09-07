@@ -66,7 +66,7 @@ export default function Header() {
                       </a>
                     </li>
                     <li>
-                      <Link href="#">Login</Link>
+                      <Link href="/login">Login</Link>
                     </li>
                   </ul>
                   <ul className="social-wrapper-one">

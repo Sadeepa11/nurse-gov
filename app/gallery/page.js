@@ -15,7 +15,7 @@ export default function GalleryPage() {
             <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 breadcrumb-1">
               <h1 className="title">Gallery</h1>
             </div>
-            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+            {/* <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
               <div className="bread-tag">
                 <Link href="/">Home</Link>
                 <span> / </span>
@@ -23,7 +23,7 @@ export default function GalleryPage() {
                   Gallery
                 </Link>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

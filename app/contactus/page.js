@@ -12,13 +12,13 @@ export default function TeamPage() {
             <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 breadcrumb-1">
               <h1 className="title">Contact Us</h1>
             </div>
-            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+            {/* <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
               <div className="bread-tag">
                 <a href="/">Home</a>
                 <span> / </span>
                 <a href="#" className="active">Contact Us</a>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

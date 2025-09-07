@@ -85,9 +85,9 @@ export default function HomePage() {
           <div className="row mt--20">
             {[
               { icon: "22.svg", title: "Union Start Date", val: "2007.01.23" },
-              { icon: "23.svg", title: "Register Nurses", val: "10625" },
+              { icon: "23.svg", title: "Register Nurses", val: "21,850" },
               // { icon: "24.svg", title: "Unregister Nurses", val: "28,125" },
-              { icon: "22.svg", title: "Government Nurses", val: "38750" }
+              { icon: "22.svg", title: "Government Nurses", val: "42,850" }
             ].map((c, i) => (
               <div className="col-xl-4 col-md-5" key={i}>
                 <motion.div
@@ -108,7 +108,7 @@ export default function HomePage() {
                   </div>
                   <h5 className="title">{c.title}</h5>
                   <p className="disc">{c.val}</p>
-                  <a href="#" className="rts-btn btn-primary-5 rounded-2">
+                  <a href="#" className="rts-btn bg-danger  rounded-2">
                     <i className="fal fa-arrow-right"></i>
                   </a>
                 </motion.div>
@@ -148,14 +148,14 @@ export default function HomePage() {
                 <div className="row about-founder-wrapper align-items-center mt--40">
                   <div className="col-lg-6 col-md-6 col-sm-6">
                     <div className="author-inner">
-                      <a className="thumbnail" href="#">
+                      {/* <a className="thumbnail" href="#">
                         <Image
                           src="/team/Ravindra.jpg"
                           width={72}
                           height={72}
                           alt="finbiz_founder"
                         />
-                      </a>
+                      </a> */}
                       <div className="founder-details">
                         <a href="/team-details">
                           <h6 className="title">S.Ravinda Kahadawaaarachi</h6>
@@ -170,8 +170,8 @@ export default function HomePage() {
                       <Image
                         className="authore-call"
                         src="/assets/images/about/call.svg"
-                        width={32}
-                        height={32}
+                        width={50}
+                        height={50}
                         alt="call_founder"
                       />
                       <div className="call-details">

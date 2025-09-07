@@ -11,13 +11,13 @@ export default function AboutContent() {
             <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 breadcrumb-1">
               <h1 className="title">About Us</h1>
             </div>
-            <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+            {/* <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
               <div className="bread-tag">
                 <Link href="/">Home</Link>
                 <span> / </span>
                 <a className="active">About Us</a>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
@@ -45,9 +45,9 @@ export default function AboutContent() {
                 <div className="row g-5 mt--30 mb--40">
                   {[
                     { title: "Union Start Date", value: "2007.01.23" },
-                    { title: "Register Nurses", value: "10625" },
-                    { title: "Unregister Nurses", value: "28,125" },
-                    { title: "Government Nurses", value: "38750" },
+                    { title: "Register Nurses", value: "21,850" },
+                    // { title: "Unregister Nurses", value: "28,125" },
+                    { title: "Government Nurses", value: "42,850" }
                   ].map((item, index) => (
                     <div className="col-lg-6" key={index}>
                       <div className="service-details-card">
@@ -72,7 +72,7 @@ export default function AboutContent() {
 
               <div className="service-detials-step-3 mt--70 mt_md--50">
                 <div className="row g-5 align-items-center">
-                  <div className="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12">
+                  {/* <div className="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div className="thumbnail sm-thumb-service">
                       <Image
                         src="/assets/images/service/vision.png"
@@ -81,7 +81,7 @@ export default function AboutContent() {
                         height={400}
                       />
                     </div>
-                  </div>
+                  </div> */}
                   <div className="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12 mb_md--20 mb_sm--20">
                     <h4 className="title">Mission</h4>
                     <p className="disc">
