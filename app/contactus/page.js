@@ -1,8 +1,51 @@
-"use client"; // if using Next 13 app directory
+"use client"
 
 import Image from "next/image";
+import { useState } from "react";
 
-export default function TeamPage() {
+
+export default function contactPage() {
+
+const [formData, setFormData] = useState({
+    name: "",
+    hospital: "",
+    id_number: "",
+    phone: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      alert(data.message);
+      setFormData({
+        name: "",
+        hospital: "",
+        id_number: "",
+        phone: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+    } catch (err) {
+      console.error(err);
+      alert("Failed to send email.");
+    }
+  };
+
+  
   return (
     <div>
       {/* Breadcrumb area */}
@@ -91,7 +134,7 @@ export default function TeamPage() {
       </div>
 
       {/* Contact Form */}
-      <div className="rts-contact-form-area">
+     <div className="rts-contact-form-area">
         <div className="container">
           <div className="row">
             <div className="col-12">
@@ -101,66 +144,22 @@ export default function TeamPage() {
                   <h2 className="title">Needs Help? Let’s Get in Touch</h2>
                 </div>
                 <div className="form-wrapper">
-                  <div id="form-messages"></div>
-                  <form
-                    id="contact-form"
-                    action="https://reactheme.com/products/html/finbiz/mailer.php"
-                    method="post"
-                  >
+                  <form onSubmit={handleSubmit}>
                     <div className="name-email">
-                      <input
-                        type="text"
-                        name="name"
-                        placeholder="Name"
-                        required
-                      />
-                      <input
-                        type="text"
-                        name="hospital"
-                        placeholder="Hospital"
-                        required
-                      />
+                      <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required />
+                      <input type="text" name="hospital" placeholder="Hospital" value={formData.hospital} onChange={handleChange} required />
                     </div>
 
                     <div className="name-email">
-                      <input
-                        type="text"
-                        name="id_number"
-                        placeholder="ID Number"
-                        required
-                      />
-                      <input
-                        type="tel"
-                        name="phone"
-                        placeholder="Phone Number"
-                        required
-                      />
+                      <input type="text" name="id_number" placeholder="ID Number" value={formData.id_number} onChange={handleChange} required />
+                      <input type="tel" name="phone" placeholder="Phone Number" value={formData.phone} onChange={handleChange} required />
                     </div>
 
-                    <input
-                      type="email"
-                      name="email"
-                      placeholder="Email Address"
-                      required
-                    />
+                    <input type="email" name="email" placeholder="Email Address" value={formData.email} onChange={handleChange} required />
+                    <input type="text" name="subject" placeholder="Your Subject" value={formData.subject} onChange={handleChange} />
+                    <textarea name="message" placeholder="Type Your Message" value={formData.message} onChange={handleChange}></textarea>
 
-                    <input
-                      type="text"
-                      name="subject"
-                      placeholder="Your Subject"
-                    />
-
-                    <textarea
-                      placeholder="Type Your Message"
-                      name="message"
-                    ></textarea>
-
-                    <button
-                      type="submit"
-                      className="rts-btn btn-primary"
-                    >
-                      Send Message
-                    </button>
+                    <button type="submit" className="rts-btn btn-primary">Send Message</button>
                   </form>
                 </div>
               </div>
