@@ -6,8 +6,6 @@ import Link from "next/link";
 export default function GalleryPage() {
   return (
     <>
-  
-
       {/* Breadcrumb */}
       <div className="rts-breadcrumb-area breadcrumb-bg bg_image">
         <div className="container">
@@ -15,34 +13,26 @@ export default function GalleryPage() {
             <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 breadcrumb-1">
               <h1 className="title">Gallery</h1>
             </div>
-            {/* <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-              <div className="bread-tag">
-                <Link href="/">Home</Link>
-                <span> / </span>
-                <Link href="#" className="active">
-                  Gallery
-                </Link>
-              </div>
-            </div> */}
           </div>
         </div>
       </div>
 
       {/* Gallery Section */}
-      <section className="portfolio-area style-4 pt--120 pb--120 pt_xs--60 pt_xs--60">
+      <section className="portfolio-area style-4 pt--120 pb--120 pt_xs--60">
         <div className="container">
           <div className="row">
-            {[1, 2, 3, 4, 5, 6].map((id) => (
+            {Array.from({ length: 60 }, (_, i) => i + 1).map((id) => (
               <div key={id} className="col-lg-4 col-md-6 col-sm-12">
                 <div className="item">
                   <div className="portfolio-wrapper">
-                    <div className="img-fluid">
+                    <div className="img-fluid" style={{ width: "100%", height: "250px", overflow: "hidden" }}>
                       <Image
                         src={`/assets/images/product/${id}.png`}
-                        alt="Portfolio Img"
+                        alt={`Portfolio Img ${id}`}
                         width={400}
                         height={300}
                         className="w-100"
+                        style={{ objectFit: "cover", width: "100%", height: "100%" }}
                       />
                     </div>
                     <div className="single-portfolio">
@@ -61,8 +51,6 @@ export default function GalleryPage() {
           </div>
         </div>
       </section>
-
-   
     </>
   );
 }

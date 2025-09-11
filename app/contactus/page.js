@@ -49,8 +49,38 @@ const [formData, setFormData] = useState({
   return (
     <div>
       {/* Breadcrumb area */}
-      <div className="rts-breadcrumb-area breadcrumb-bg bg_image">
-        <div className="container">
+      <div style={{ position: 'relative', width: '100%', minHeight: 300 }}>
+  <div
+    className="rts-breadcrumb-area breadcrumb-bg bg_image"
+    style={{
+      backgroundImage: "url('/assets/images/bg/contactusbg.jpg')",
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      width: '100%',
+      minHeight: 300,
+      position: 'relative',
+      zIndex: 1
+    }}
+  >
+    {/* Black overlay */}
+    <div style={{
+      position: 'absolute',
+      top: 0, left: 0, right: 0, bottom: 0,
+      background: 'rgba(0,0,0,0.5)',
+      zIndex: 2
+    }} />
+    {/* Red shape (example: triangle) */}
+    {/* <div style={{
+      position: 'absolute',
+      top: 0, left: 0,
+      width: 0, height: 0,
+      borderTop: '100px solid red',
+      borderRight: '100px solid transparent',
+      zIndex: 3
+    }} /> */}
+    {/* Banner content here */}
+    <div style={{ position: 'relative', zIndex: 4 }}>
+      <div className="container">
           <div className="row align-items-center">
             <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 breadcrumb-1">
               <h1 className="title">Contact Us</h1>
@@ -64,7 +94,9 @@ const [formData, setFormData] = useState({
             </div> */}
           </div>
         </div>
-      </div>
+    </div>
+  </div>
+</div>
 
       {/* Contact info cards */}
       <div className="rts-contact-area rts-section-gap">
