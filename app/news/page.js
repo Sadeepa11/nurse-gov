@@ -32,7 +32,7 @@ export default function NewsEventsPage() {
       title: "Protest against tax bill, electricity bill, loan interest",
     },
     {
-      img: "nblog2.png",
+      img: "nblog3.jpeg",
       date: "12. 09. 2025",
       cat: "National Nursing Sports Festival",
       title: "The National Nursing Sports Festival organized by the All Lanka Nursing Union for the second time under the theme 'A Life for Nurses, a Healthy Life for the People' was held on September 12th and 13th at the Vincent Dias Stadium in Badulla. A large number of nurses and nursing students from hospitals and nursing colleges across the island participated. The Badulla Teaching Hospital Nursing Staff provided hospitality and organizational support. Sporting events were held in four categories: Cricket, Volleyball, Netball, and Badminton."
