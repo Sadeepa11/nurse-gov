@@ -38,7 +38,23 @@ export default function NewsEventsPage() {
       title: "The National Nursing Sports Festival organized by the All Lanka Nursing Union for the second time under the theme 'A Life for Nurses, a Healthy Life for the People' was held on September 12th and 13th at the Vincent Dias Stadium in Badulla. A large number of nurses and nursing students from hospitals and nursing colleges across the island participated. The Badulla Teaching Hospital Nursing Staff provided hospitality and organizational support. Sporting events were held in four categories: Cricket, Volleyball, Netball, and Badminton."
     },
 
+
   ];
+
+
+  // Helper function to convert your DD. MM. YYYY string to a sortable Date object
+  const parseDate = (dateStr) => {
+    const [day, month, year] = dateStr.split(". ");
+    // Note: JavaScript Date months are 0-indexed (0=Jan, 11=Dec)
+    return new Date(year, month - 1, day);
+  };
+
+  // Create a new sorted array.
+  // We use .slice() to avoid changing the original 'news' array.
+  // 'b - a' sorts in descending order (most recent first).
+  const sortedNews = news.slice().sort((a, b) => {
+    return parseDate(b.date) - parseDate(a.date);
+  });
 
   return (
     <>
@@ -74,7 +90,7 @@ export default function NewsEventsPage() {
           </div>
 
           <div className="row mt--10 g-5">
-            {news.map((b, i) => (
+            {sortedNews.map((b, i) => (
               <div className="col-lg-4" key={i}>
                 <motion.div
                   className="rts-blog-area-style-seven"
