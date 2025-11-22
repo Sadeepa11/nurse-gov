@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { readData } from "../../../lib/file-db";
@@ -291,13 +290,15 @@ export default async function NewsDetailPage({ params }) {
         {/* Hero Image Section */}
         <div className="container" style={{ marginTop: '0', paddingBottom: '60px' }}>
           <div className="hero-image-container">
-            <Image
+            <img
               src={imageSrc}
               alt={entry.title}
-              fill
-              style={{ objectFit: 'cover' }}
-              sizes="(min-width: 1200px) 1140px, 100vw"
-              priority
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                display: 'block',
+              }}
             />
           </div>
         </div>

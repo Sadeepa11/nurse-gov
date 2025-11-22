@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
@@ -137,11 +136,17 @@ export default function NewsEventsPage() {
                     >
                       <div className="thumbnail">
                         <Link href={`/news/${item.id}`}>
-                          <Image
+                          <img
                             src={imageSrc}
-                            width={410}
-                            height={260}
                             alt={item.title}
+                            loading="lazy"
+                            style={{
+                              width: '100%',
+                              height: '260px',
+                              objectFit: 'cover',
+                              borderRadius: '12px',
+                              display: 'block',
+                            }}
                           />
                         </Link>
                         <div className="badge">
