@@ -1,0 +1,8 @@
+[
+  {
+    "id": "admin-1",
+    "email": "info@acnu.lk",
+    "passwordHash": "afce84868e3b86d32f2cc8629b780a0e93da4a7090ca9224dd4c194c4805ab30",
+    "role": "admin"
+  }
+]

@@ -2,9 +2,7 @@
 // import { Metadata } from "next";
 // We keep global CSS minimal and link vendor CSS via <link> (served from /public/assets)
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import ScrollProgress from "@/components/ScrollProgress";
+import SiteChrome from "@/components/SiteChrome";
 
 export const Metadata = {
   title: "ALL CEYLON NURSES’ UNION | SRI LANKA",
@@ -28,12 +26,7 @@ export default function RootLayout({
         <title>ACNU | All Ceylon Nurses' Union</title>
       </head>
       <body>
-
-        <Header />
-        {children}
-        <Footer />
- <ScrollProgress />
-
+        <SiteChrome>{children}</SiteChrome>
 
         {/*  scripts start form hear */}
     <script src="assets/js/vendor/jquery.min.js"></script>

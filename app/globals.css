@@ -28,3 +28,10 @@ html, body { margin: 0; padding: 0; }
 .team-card .inner-content {
   padding-top: 12px;
 }
+
+/* Admin shell hides public chrome */
+body.admin-shell header,
+body.admin-shell footer,
+body.admin-shell .progress-wrap {
+  display: none !important;
+}

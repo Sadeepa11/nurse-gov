@@ -1,16 +1,62 @@
 "use client";
 
-import Link from "next/link";
+import { useEffect, useMemo, useState } from "react";
 
-const applications = [
-  { 
-    name: "Membership Form", 
-    description: "General membership application", 
-    file: "/applications/MembershipForm.pdf"
-  }
+const LEGACY_APPLICATIONS = [
+  {
+    id: 'legacy-membership-form',
+    title: 'Membership Form',
+    description: 'General membership application',
+    fileUrl: '/applications/MembershipForm.pdf',
+    status: 'active',
+    createdAt: '2020-01-01T00:00:00.000Z',
+    updatedAt: '2020-01-01T00:00:00.000Z',
+  },
 ];
 
 export default function ApplicationsPage() {
+  const [applications, setApplications] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchApplications = async () => {
+      setLoading(true);
+      try {
+        const res = await fetch('/api/applications', { cache: 'no-store' });
+        if (!res.ok) throw new Error('Failed to load applications');
+        const data = await res.json();
+        setApplications(Array.isArray(data) ? data : []);
+      } catch (error) {
+        console.error(error);
+        setApplications([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchApplications();
+  }, []);
+
+  const visibleApplications = useMemo(() => {
+    const ordered = [...applications]
+      .filter((item) => (item.status || 'active') === 'active')
+      .sort((a, b) => {
+        const bDate = b.updatedAt || b.createdAt || 0;
+        const aDate = a.updatedAt || a.createdAt || 0;
+        return new Date(bDate) - new Date(aDate);
+      });
+
+    const legacyToInclude = LEGACY_APPLICATIONS.filter(
+      (legacy) => !ordered.some((app) => app.title?.toLowerCase() === legacy.title.toLowerCase())
+    );
+
+    if (!ordered.length) {
+      return legacyToInclude;
+    }
+
+    return [...ordered, ...legacyToInclude];
+  }, [applications]);
+
   return (
     <>
       {/* Breadcrumb */}
@@ -20,13 +66,6 @@ export default function ApplicationsPage() {
             <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 breadcrumb-1">
               <h1 className="title">Applications</h1>
             </div>
-            {/* <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-              <div className="bread-tag">
-                <Link href="/">Home</Link>
-                <span> / </span>
-                <Link href="#" className="active">Applications</Link>
-              </div>
-            </div> */}
           </div>
         </div>
       </div>
@@ -45,43 +84,54 @@ export default function ApplicationsPage() {
 
           <div className="row">
             <div className="col-12">
-              <table className="table table-bordered table-hover">
-                <thead className="table-light">
-                  <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>View</th>
-                    <th>Download</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {applications.map((app, idx) => (
-                    <tr key={idx}>
-                      <td>{app.name}</td>
-                      <td>{app.description}</td>
-                      <td>
-                        <a 
-                          href={app.file} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="btn btn-outline-dark btn-lg text-decoration-none"
-                        >
-                          View
-                        </a>
-                      </td>
-                      <td>
-                        <a 
-                          href={app.file} 
-                          download 
-                          className="btn btn-danger btn-lg  text-decoration-none"
-                        >
-                          Download
-                        </a>
-                      </td>
+              {loading ? (
+                <p>Loading...</p>
+              ) : (
+                <table className="table table-bordered table-hover">
+                  <thead className="table-light">
+                    <tr>
+                      <th>Name</th>
+                      <th>Description</th>
+                      <th>View</th>
+                      <th>Download</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {visibleApplications.map((app) => (
+                      <tr key={app.id}>
+                        <td>{app.title}</td>
+                        <td>{app.description || '—'}</td>
+                        <td>
+                          <a
+                            href={app.fileUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn btn-outline-dark btn-lg text-decoration-none"
+                          >
+                            View
+                          </a>
+                        </td>
+                        <td>
+                          <a
+                            href={app.fileUrl}
+                            download
+                            className="btn btn-danger btn-lg text-decoration-none"
+                          >
+                            Download
+                          </a>
+                        </td>
+                      </tr>
+                    ))}
+                    {!visibleApplications.length && (
+                      <tr>
+                        <td colSpan={4} className="text-center py-4">
+                          No applications available at the moment.
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              )}
             </div>
           </div>
         </div>
