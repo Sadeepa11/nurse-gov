@@ -105,7 +105,11 @@ export async function POST(request) {
       );
     }
 
-    const albums = await readData(FILENAME);
+    let albums = await readData(FILENAME);
+    if (!Array.isArray(albums)) {
+      console.warn('Unexpected galleries payload, resetting to empty array.');
+      albums = [];
+    }
     const now = new Date().toISOString();
 
     if (albumId) {
@@ -127,7 +131,16 @@ export async function POST(request) {
       }
 
       const photosToSave = files.slice(0, spaceRemaining);
-      const uploadedPhotos = await Promise.all(photosToSave.map((file) => savePhoto(file)));
+      const uploadedPhotos = await Promise.all(
+        photosToSave.map(async (file) => {
+          try {
+            return await savePhoto(file);
+          } catch (fileError) {
+            console.error('Failed to save gallery photo:', fileError);
+            throw fileError;
+          }
+        })
+      );
       album.images = [...album.images, ...uploadedPhotos];
       album.updatedAt = now;
 
@@ -140,7 +153,18 @@ export async function POST(request) {
       return NextResponse.json({ message: 'Album title is required.' }, { status: 400 });
     }
 
-    const uploadedPhotos = files.length ? await Promise.all(files.map((file) => savePhoto(file))) : [];
+    const uploadedPhotos = files.length
+      ? await Promise.all(
+          files.map(async (file) => {
+            try {
+              return await savePhoto(file);
+            } catch (fileError) {
+              console.error('Failed to save gallery photo:', fileError);
+              throw fileError;
+            }
+          })
+        )
+      : [];
     const newAlbum = {
       id: `g_${randomUUID()}`,
       albumTitle,
@@ -155,7 +179,10 @@ export async function POST(request) {
     return NextResponse.json(newAlbum, { status: 201 });
   } catch (error) {
     console.error('POST /api/gallery failed:', error);
-    return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
+    return NextResponse.json({
+      message: 'Internal Server Error',
+      detail: error instanceof Error ? error.message : String(error),
+    }, { status: 500 });
   }
 }
 
