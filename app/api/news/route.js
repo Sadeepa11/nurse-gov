@@ -14,6 +14,14 @@ const MIME_EXTENSION_MAP = {
   'image/png': '.png',
   'image/webp': '.webp',
   'image/gif': '.gif',
+  'image/avif': '.avif',
+  'image/svg+xml': '.svg',
+  'image/bmp': '.bmp',
+  'image/tiff': '.tiff',
+  'image/x-icon': '.ico',
+  'image/vnd.microsoft.icon': '.ico',
+  'image/heic': '.heic',
+  'image/heif': '.heif',
 };
 
 const normalizeString = (value) => (typeof value === 'string' ? value.trim() : '');
