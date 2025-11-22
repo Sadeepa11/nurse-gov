@@ -5,9 +5,17 @@ import { randomUUID } from 'crypto';
 import { readData, writeData } from '../../../lib/file-db';
 
 export const dynamic = 'force-dynamic';
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: '50mb',
+    },
+  },
+};
 
 const FILENAME = 'galleries.json';
 const MAX_PHOTOS = 15;
+const MAX_TOTAL_UPLOAD_BYTES = 25 * 1024 * 1024; // 25 MB aggregate limit
 const GALLERY_UPLOAD_DIR = path.join(process.cwd(), 'public', 'uploads', 'galleries');
 
 const MIME_EXTENSION_MAP = {
@@ -97,6 +105,16 @@ export async function POST(request) {
       .getAll('photos')
       .filter(isFileLike)
       .slice(0, MAX_PHOTOS);
+
+    const totalUploadBytes = files.reduce((sum, file) => sum + (file?.size || 0), 0);
+    if (totalUploadBytes > MAX_TOTAL_UPLOAD_BYTES) {
+      return NextResponse.json(
+        {
+          message: `Total upload size exceeds ${(MAX_TOTAL_UPLOAD_BYTES / (1024 * 1024)).toFixed(1)} MB limit. Please upload fewer or smaller images.`,
+        },
+        { status: 413 },
+      );
+    }
 
     if (!albumTitle && !albumId) {
       return NextResponse.json(
