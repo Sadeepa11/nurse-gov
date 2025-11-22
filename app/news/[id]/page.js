@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { headers } from "next/headers";
 import { readData } from "../../../lib/file-db";
 import { LEGACY_NEWS, findLegacyNewsById } from "../../../lib/legacy-news";
 
@@ -18,19 +19,37 @@ const formatDateLabel = (dateValue) => {
   });
 };
 
+const normalizeImagePath = (value) => {
+  if (!value) return "";
+  return value.replace(/\\/g, "/");
+};
+
 const normalizeEntry = (entry) => {
   if (!entry) return null;
   return {
     id: entry.id,
     title: entry.title,
     description: entry.description,
-    imageUrl: entry.imageUrl,
+    imageUrl: normalizeImagePath(entry.imageUrl),
     type: entry.type || "news",
     category: entry.category,
     createdAt: entry.createdAt,
     updatedAt: entry.updatedAt,
     author: entry.author || "Admin",
   };
+};
+
+const buildAbsoluteUrl = (imageUrl, protocol, host) => {
+  if (!imageUrl) return "";
+  const normalized = normalizeImagePath(imageUrl);
+  if (/^https?:\/\//i.test(normalized)) {
+    return normalized;
+  }
+  const path = normalized.startsWith("/") ? normalized : `/${normalized}`;
+  if (protocol && host) {
+    return `${protocol}://${host}${path}`;
+  }
+  return path;
 };
 
 async function loadNewsItem(id) {
@@ -178,8 +197,14 @@ export default async function NewsDetailPage({ params }) {
     notFound();
   }
 
+  const headerList = headers();
+  const host = headerList.get("x-forwarded-host") ?? headerList.get("host");
+  const explicitProtocol = headerList.get("x-forwarded-proto");
+  const protocol = explicitProtocol || (host && host.includes("localhost") ? "http" : "https");
+
   const displayDate = formatDateLabel(entry.updatedAt || entry.createdAt);
-  const imageSrc = entry.imageUrl || "/assets/images/blog/nblog1.png";
+  const resolvedImageSrc = buildAbsoluteUrl(entry.imageUrl, protocol, host);
+  const imageSrc = resolvedImageSrc || "/assets/images/blog/nblog1.png";
   const backHref = "/news";
   const typeLabel = entry.type === "event" ? "Event" : "News";
 

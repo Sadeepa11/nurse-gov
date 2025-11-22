@@ -5,6 +5,19 @@ import { motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 import { LEGACY_NEWS } from "@/lib/legacy-news";
 
+const resolveImageUrl = (url) => {
+  if (!url) return "";
+  const normalized = url.replace(/\\/g, "/");
+  if (/^https?:\/\//i.test(normalized)) {
+    return normalized;
+  }
+  const path = normalized.startsWith("/") ? normalized : `/${normalized}`;
+  if (typeof window !== "undefined" && window.location?.origin) {
+    return `${window.location.origin}${path}`;
+  }
+  return path;
+};
+
 // Animation variant
 const fadeUp = {
   initial: { opacity: 0, y: 50 },
@@ -43,7 +56,7 @@ export default function NewsEventsPage() {
           id: item.id,
           title: item.title,
           description: item.description,
-          imageUrl: item.imageUrl,
+          imageUrl: resolveImageUrl(item.imageUrl),
           type: item.type,
           category: item.type === 'event' ? 'Event' : 'News',
           createdAt: item.updatedAt || item.createdAt,
