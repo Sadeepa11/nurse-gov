@@ -2,12 +2,25 @@
 
 import { useEffect, useMemo, useState } from "react";
 
+const resolveFileUrl = (url) => {
+  if (!url) return "";
+  const normalized = url.replace(/\\/g, "/");
+  if (/^https?:\/\//i.test(normalized)) {
+    return normalized;
+  }
+  const path = normalized.startsWith("/") ? normalized : `/${normalized}`;
+  if (typeof window !== "undefined" && window.location?.origin) {
+    return `${window.location.origin}${path}`;
+  }
+  return path;
+};
+
 const LEGACY_APPLICATIONS = [
   {
     id: 'legacy-membership-form',
     title: 'Membership Form',
     description: 'General membership application',
-    fileUrl: '/applications/MembershipForm.pdf',
+    fileUrl: resolveFileUrl('/applications/MembershipForm.pdf'),
     status: 'active',
     createdAt: '2020-01-01T00:00:00.000Z',
     updatedAt: '2020-01-01T00:00:00.000Z',
@@ -25,7 +38,13 @@ export default function ApplicationsPage() {
         const res = await fetch('/api/applications', { cache: 'no-store' });
         if (!res.ok) throw new Error('Failed to load applications');
         const data = await res.json();
-        setApplications(Array.isArray(data) ? data : []);
+        const normalized = Array.isArray(data)
+          ? data.map((item) => ({
+              ...item,
+              fileUrl: resolveFileUrl(item.fileUrl),
+            }))
+          : [];
+        setApplications(normalized);
       } catch (error) {
         console.error(error);
         setApplications([]);
