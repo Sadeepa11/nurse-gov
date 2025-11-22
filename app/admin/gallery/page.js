@@ -11,6 +11,7 @@ const GalleryAdminPage = () => {
   const [albumDescription, setAlbumDescription] = useState('');
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [saving, setSaving] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const MAX_PHOTOS = 15;
 
   const fetchGalleries = async () => {
@@ -56,6 +57,7 @@ const GalleryAdminPage = () => {
 
     try {
         setSaving(true);
+        setUploading(true);
         const res = await fetch('/api/gallery', {
           method: 'POST',
           body: formData, // No Content-Type header needed for FormData
@@ -75,7 +77,8 @@ const GalleryAdminPage = () => {
         console.error(error);
         alert('An unknown error occurred during upload.');
     } finally {
-        setSaving(false);
+      setSaving(false);
+      setUploading(false);
     }
   };
 
@@ -101,7 +104,64 @@ const GalleryAdminPage = () => {
   if (loading) return <AdminLayout title="Gallery">Loading...</AdminLayout>;
 
   return (
-    <AdminLayout title="Gallery Management (Max 15 Photos/Album)">
+    <>
+      <style jsx>{`
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+        .upload-overlay {
+          position: fixed;
+          inset: 0;
+          background: rgba(0, 0, 0, 0.45);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 1000;
+        }
+        .upload-dialog {
+          background: #ffffff;
+          padding: 24px 32px;
+          border-radius: 12px;
+          box-shadow: 0 20px 45px rgba(15, 23, 42, 0.25);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 16px;
+          max-width: 320px;
+          width: 100%;
+          text-align: center;
+        }
+        .upload-spinner {
+          width: 48px;
+          height: 48px;
+          border: 4px solid rgba(220, 38, 38, 0.15);
+          border-top-color: #dc2626;
+          border-radius: 50%;
+          animation: spin 0.9s linear infinite;
+        }
+        .upload-dialog p {
+          margin: 0;
+          font-weight: 600;
+          color: #1f2937;
+        }
+        .upload-dialog span {
+          font-size: 0.9rem;
+          color: #6b7280;
+        }
+      `}</style>
+
+      {uploading && (
+        <div className="upload-overlay" role="status" aria-live="polite">
+          <div className="upload-dialog">
+            <div className="upload-spinner" />
+            <p>Uploading album photos…</p>
+            <span>Please keep this tab open until the upload completes.</span>
+          </div>
+        </div>
+      )}
+
+      <AdminLayout title="Gallery Management (Max 15 Photos/Album)">
       {/* Create Album Form */}
       <form onSubmit={handleCreateAlbum} style={{ background: 'white', padding: '20px', borderRadius: '5px', marginBottom: '40px' }}>
         <h3>Create New Album</h3>
@@ -118,8 +178,8 @@ const GalleryAdminPage = () => {
             <input type="file" multiple onChange={handleFileChange} accept="image/*" />
             <p style={{ fontSize: '0.9em', color: '#6c757d' }}>{selectedFiles.length} files selected.</p>
         </div>
-        <button type="submit" style={{ padding: '10px 20px', background: '#28a745', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }} disabled={saving}>
-          Create Album
+        <button type="submit" style={{ padding: '10px 20px', background: '#28a745', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '8px' }} disabled={saving}>
+          {uploading ? 'Uploading…' : 'Create Album'}
         </button>
       </form>
 
@@ -162,6 +222,7 @@ const GalleryAdminPage = () => {
         </tbody>
       </table>
     </AdminLayout>
+    </>
   );
 };
 
