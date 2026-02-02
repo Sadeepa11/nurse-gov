@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 
 import { readData } from '@/lib/file-db';
 
-export const dynamic = 'force-dynamic';
+// export const dynamic = 'force-dynamic'; // Disabled for Static Export
 
 const DATA_FILE = 'galleries.json';
 
