@@ -1,8 +1,14 @@
-// app/layout.tsx
-// import { Metadata } from "next";
-// We keep global CSS minimal and link vendor CSS via <link> (served from /public/assets)
+// app/layout.js
 import "./globals.css";
+import "./styles/swiper.min.css";
+import "./styles/fontawesome-5.css";
+import "./styles/animate.min.css";
+import "./styles/unicons.css";
+import "./styles/bootstrap.min.css";
+import "./theme.css";
+
 import SiteChrome from "@/components/SiteChrome";
+import Script from "next/script";
 
 export const Metadata = {
   title: "ALL CEYLON NURSES’ UNION | SRI LANKA",
@@ -15,35 +21,27 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Favicon + Vendor CSS (served from /public) */}
+        {/* Favicon - served from /public/assets/images */}
         <link rel="shortcut icon" href="/assets/images/fav.png" />
-        <link rel="stylesheet" href="/assets/css/plugins/swiper.min.css" />
-        <link rel="stylesheet" href="/assets/css/plugins/fontawesome-5.css" />
-        <link rel="stylesheet" href="/assets/css/plugins/animate.min.css" />
-        <link rel="stylesheet" href="/assets/css/plugins/unicons.css" />
-        <link rel="stylesheet" href="/assets/css/vendor/bootstrap.min.css" />
-        <link rel="stylesheet" href="/assets/css/style.css" />
         <title>ACNU | All Ceylon Nurses' Union</title>
       </head>
       <body>
         <SiteChrome>{children}</SiteChrome>
 
-        {/*  scripts start form hear */}
-        <script src="/assets/js/vendor/jquery.min.js"></script>
-        <script src="/assets/js/vendor/jqueryui.js"></script>
-        <script src="/assets/js/vendor/waypoint.js"></script>
-        <script src="/assets/js/plugins/swiper.js"></script>
-        <script src="/assets/js/plugins/counterup.js"></script>
-        <script src="/assets/js/plugins/sal.min.js"></script>
-        <script src="/assets/js/vendor/bootstrap.min.js"></script>
-
-        <script src="/assets/js/vendor/waw.js"></script>
-        <script src="/assets/js/plugins/contact.form.js"></script>
-        {/* main Js */}
-        <script src="/assets/js/main.js"></script>
-        {/*  scripts end form hear */}
+        {/* Scripts using next/script for optimal loading */}
+        <Script src="/assets/js/vendor/jquery.min.js" strategy="beforeInteractive" />
+        <Script src="/assets/js/vendor/jqueryui.js" strategy="beforeInteractive" />
+        <Script src="/assets/js/vendor/waypoint.js" strategy="afterInteractive" />
+        <Script src="/assets/js/plugins/swiper.js" strategy="afterInteractive" />
+        <Script src="/assets/js/plugins/counterup.js" strategy="afterInteractive" />
+        <Script src="/assets/js/plugins/sal.min.js" strategy="afterInteractive" />
+        <Script src="/assets/js/vendor/bootstrap.min.js" strategy="afterInteractive" />
+        <Script src="/assets/js/vendor/waw.js" strategy="afterInteractive" />
+        <Script src="/assets/js/plugins/contact.form.js" strategy="afterInteractive" />
+        <Script src="/assets/js/main.js" strategy="afterInteractive" />
 
       </body>
     </html>
   );
 }
+
