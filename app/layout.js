@@ -15,6 +15,9 @@ export const Metadata = {
   description: "Life for the nurses for the wellbeing of people.",
 };
 
+// IMPORTANT: If deploying to a subdirectory, set this to '/subfolder_name' (must match next.config.mjs)
+const ASSET_PREFIX = '';
+
 export default function RootLayout({
   children,
 }) {
@@ -22,23 +25,23 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* Favicon - served from /public/assets/images */}
-        <link rel="shortcut icon" href="/assets/images/fav.png" />
+        <link rel="shortcut icon" href={`${ASSET_PREFIX}/assets/images/fav.png`} />
         <title>ACNU | All Ceylon Nurses' Union</title>
       </head>
       <body>
         <SiteChrome>{children}</SiteChrome>
 
         {/* Scripts using next/script for optimal loading */}
-        <Script src="/assets/js/vendor/jquery.min.js" strategy="beforeInteractive" />
-        <Script src="/assets/js/vendor/jqueryui.js" strategy="beforeInteractive" />
-        <Script src="/assets/js/vendor/waypoint.js" strategy="afterInteractive" />
-        <Script src="/assets/js/plugins/swiper.js" strategy="afterInteractive" />
-        <Script src="/assets/js/plugins/counterup.js" strategy="afterInteractive" />
-        <Script src="/assets/js/plugins/sal.min.js" strategy="afterInteractive" />
-        <Script src="/assets/js/vendor/bootstrap.min.js" strategy="afterInteractive" />
-        <Script src="/assets/js/vendor/waw.js" strategy="afterInteractive" />
-        <Script src="/assets/js/plugins/contact.form.js" strategy="afterInteractive" />
-        <Script src="/assets/js/main.js" strategy="afterInteractive" />
+        <Script src={`${ASSET_PREFIX}/assets/js/vendor/jquery.min.js`} strategy="beforeInteractive" />
+        <Script src={`${ASSET_PREFIX}/assets/js/vendor/jqueryui.js`} strategy="beforeInteractive" />
+        <Script src={`${ASSET_PREFIX}/assets/js/vendor/waypoint.js`} strategy="afterInteractive" />
+        <Script src={`${ASSET_PREFIX}/assets/js/plugins/swiper.js`} strategy="afterInteractive" />
+        <Script src={`${ASSET_PREFIX}/assets/js/plugins/counterup.js`} strategy="afterInteractive" />
+        <Script src={`${ASSET_PREFIX}/assets/js/plugins/sal.min.js`} strategy="afterInteractive" />
+        <Script src={`${ASSET_PREFIX}/assets/js/vendor/bootstrap.min.js`} strategy="afterInteractive" />
+        <Script src={`${ASSET_PREFIX}/assets/js/vendor/waw.js`} strategy="afterInteractive" />
+        <Script src={`${ASSET_PREFIX}/assets/js/plugins/contact.form.js`} strategy="afterInteractive" />
+        <Script src={`${ASSET_PREFIX}/assets/js/main.js`} strategy="afterInteractive" />
 
       </body>
     </html>
