@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	// Let Next.js trace assets automatically for production builds
+	output: 'export',
+	images: {
+		unoptimized: true,
+	},
 };
 
 export default nextConfig;
